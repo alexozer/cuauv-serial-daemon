@@ -9,6 +9,8 @@ the previous implementation.
 
 See my [Technical Documentation](doc/serial_daemon_aso26.pdf) for more info.
 
+---
+
 ## New Serial Stack Overview
 ![New Serial Stack](doc/new-serial-noian.png)
 
