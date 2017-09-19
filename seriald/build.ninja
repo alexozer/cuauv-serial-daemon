@@ -1,0 +1,33 @@
+builddir = serial/seriald/binaries
+build $builddir/auv-seriald.objs/main.o: cxx serial/seriald/main.cpp || $
+    link-stage/libshm.so link-stage/libauvlog.so $
+    link-stage/libauv-serial.so link-stage/libfmt.so
+  cflags = $cflags 
+build $builddir/auv-seriald.objs/config.o: cxx serial/seriald/config.cpp || $
+    link-stage/libshm.so link-stage/libauvlog.so $
+    link-stage/libauv-serial.so link-stage/libfmt.so
+  cflags = $cflags 
+build $builddir/auv-seriald.objs/device.o: cxx serial/seriald/device.cpp || $
+    link-stage/libshm.so link-stage/libauvlog.so $
+    link-stage/libauv-serial.so link-stage/libfmt.so
+  cflags = $cflags 
+build $builddir/auv-seriald.objs/device_list.o: cxx $
+    serial/seriald/device_list.cpp || link-stage/libshm.so $
+    link-stage/libauvlog.so link-stage/libauv-serial.so link-stage/libfmt.so
+  cflags = $cflags 
+build $builddir/auv-seriald.objs/sub_status.o: cxx $
+    serial/seriald/sub_status.cpp || link-stage/libshm.so $
+    link-stage/libauvlog.so link-stage/libauv-serial.so link-stage/libfmt.so
+  cflags = $cflags 
+build $builddir/auv-seriald.o: link $builddir/auv-seriald.objs/main.o $
+    $builddir/auv-seriald.objs/config.o $builddir/auv-seriald.objs/device.o $
+    $builddir/auv-seriald.objs/device_list.o $
+    $builddir/auv-seriald.objs/sub_status.o | link-stage/libshm.so $
+    link-stage/libauvlog.so link-stage/libauv-serial.so link-stage/libfmt.so
+  libs = -lnanomsg -lshm -lauvlog -lauv-serial -lfmt
+  ldflags = $ldflags 
+build auv-seriald: phony link-stage/auv-seriald
+build link-stage/auv-seriald: install $builddir/auv-seriald.o
+build code-serial/seriald: phony | link-stage/auv-seriald
+build tests-serial/seriald: phony 
+build check-serial/seriald: phony 
