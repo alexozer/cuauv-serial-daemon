@@ -12,10 +12,10 @@ See my [Technical Documentation](doc/serial_daemon_aso26.pdf) for more info.
 ---
 
 ## New Serial Stack Overview
-![New Serial Stack](doc/new-serial-noian.png)
+![New Serial Stack](doc/images/new-serial-noian.png)
 
 ## Seriald Implementation Overview
-![Seriald Overview](doc/overview.png)
+![Seriald Overview](doc/images/overview.png)
 
 ## Seriald Device Objects
-![Device Objects](doc/device-objects.png)
+![Device Objects](doc/images/device-objects.png)
